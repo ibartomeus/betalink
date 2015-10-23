@@ -135,7 +135,7 @@ betalink  <-  function(w1, w2, bf=B01, quant = FALSE, calculate_2nd_decompositio
       bf = B15
       print("bf overwritten when calculate_2nd_decomposition = TRUE. Using bf = B15 (=(b+c)/(a+b+c))")
     }
-    # a sum of minima in among-site comparisons; band c are its sum minus a.
+    # a sum of minima in among-site comparisons; b and c are its sum minus a.
     pmb = function(A,B) list(b= sum(A) - sum(pmin(A, B)), c = sum(B) - sum(pmin(A, B)), a = sum(pmin(A, B)))
     #species level
     rows_ <- unique(c(rownames(w1), rownames(w2)))
