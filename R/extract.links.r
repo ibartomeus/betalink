@@ -10,7 +10,7 @@ extract.links  <-  function(W,...){
         meta_melted <- subset(melt(metaweb[rownames(w),colnames(w)]), value > 0)
         meta_melted$link <- paste(meta_melted$X1, meta_melted$X2,sep = "_")
         w_melted <- subset(melt(as.matrix(w)), value > 0)
-        w_melted$link <- paste(w_melted$Var.1, w_melted$Var.2,sep = "_")
+        w_melted$link <- paste(w_melted$X1, w_melted$X2,sep = "_")
         n <- which(!meta_melted$link %in% w_melted$link)
         meta_melted$lost <- ifelse(c(1:nrow(meta_melted)) %in% n, 1, 0)
         #meta_melted$value <- ifelse(meta_melted$lost == 0, 0, w_melted$value)
