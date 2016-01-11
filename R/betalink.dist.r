@@ -1,4 +1,4 @@
-betalink.dist <-  function(W, calculate_2nd_decomposition = TRUE, ...){
+betalink.dist <-  function(W, calculate_2nd_decomposition = TRUE, quant = FALSE, ...){
 	dWN = matrix(NA,ncol=length(W),nrow=length(W))
 	colnames(dWN) = names(W)
 	rownames(dWN) = names(W)
@@ -7,7 +7,7 @@ betalink.dist <-  function(W, calculate_2nd_decomposition = TRUE, ...){
 	dST = dWN
 	dContrib = dWN
     #add new metrics
-	dU_3 = dWN
+	dU_3 = dWN #this fails when second decomposition is FALSE!!! FIX.
     dUrich = dWN
     dL_3 = dWN
     dLrich = dWN
@@ -21,8 +21,9 @@ betalink.dist <-  function(W, calculate_2nd_decomposition = TRUE, ...){
     #dSTrich = dWN
 	for(i in c(1:(length(W)-1))){
 		for(j in c((i+1):(length(W)))){
-			partition = betalink(W[[i]],W[[j]], calculate_2nd_decomposition = calculate_2nd_decomposition)
-            dWN[j,i]		= partition$WN
+			partition = betalink(W[[i]],W[[j]], calculate_2nd_decomposition = calculate_2nd_decomposition,
+			                     quant = quant)
+      dWN[j,i]		= partition$WN
 			dOS[j,i]		= partition$OS
 			dS[j,i]			= partition$S
 			dST[j,i]		= partition$ST
