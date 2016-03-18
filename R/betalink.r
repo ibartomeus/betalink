@@ -101,14 +101,16 @@ betalink  <-  function(w1, w2, bf=B01, quant = FALSE, calculate_2nd_decompositio
             b_contrib = 0
         }
     } else {
-        beta_WN = 0 #why can you not calculate WN when all species are different?
+        beta_WN = 1 #why can you not calculate WN when all species are different?
+        #NB makes this change after thinking carefully. I think no overlap implies maximum 
+        #beta, not minimum!!
         beta_OS = 0
-        beta_ST = 0
-        b_contrib = 0
+        beta_ST = 1
+        b_contrib = 1
         #calculate link second decomposition 
         if(calculate_2nd_decomposition == TRUE){ 
-            beta_3 = 0
-            beta_rich = 0
+            beta_3 = NA #when there is no overlap can't say why, right?
+            beta_rich = NA
             beta_OS_3 = 0
             beta_OSrich = 0    
             #beta_ST_3 = 0
@@ -204,14 +206,15 @@ betalink  <-  function(w1, w2, bf=B01, quant = FALSE, calculate_2nd_decompositio
         b_contrib = 0
       }
     } else {
-      beta_WN = 0 #why can you not calculate WN when all species are different?
+      beta_WN = 1 #why can you not calculate WN when all species are different?
+      #idem reasoning as before, no overlap, max WN
       beta_OS = 0
-      beta_ST = 0
-      b_contrib = 0
+      beta_ST = 1
+      b_contrib = 1
       #calculate link second decomposition 
       if(calculate_2nd_decomposition == TRUE){ 
-        beta_3 = 0
-        beta_rich = 0
+        beta_3 = NA
+        beta_rich = NA
         beta_OS_3 = 0
         beta_OSrich = 0    
         #beta_ST_3 = 0
@@ -240,20 +243,20 @@ betalink  <-  function(w1, w2, bf=B01, quant = FALSE, calculate_2nd_decompositio
 #                                   1,0,1,0,0,0,
 #                                   1,0,0,0,0,0,
 #                                   0,1,0,1,0,0,
-#                                   1,0,0,0,0,0), 
-#             dimnames = list(c("a","b", "c", "d", "e","f"), 
+#                                   1,0,0,0,0,0),
+#             dimnames = list(c("a","b", "c", "d", "e","f"),
 #                             c("A", "B", "C","D","E","F")), byrow = TRUE)
 # 
 # w2 <- matrix(ncol = 5, nrow = 5, c(1,1,1,1,1,
 #                                   0,1,0,1,0, #small change in OS (2 links)
-#                                   1,0,0,0,0, 
+#                                   1,0,0,0,0,
 #                                   1,0,1,0,0, #I also add one link to turnover
 #                                   0,1,0,1,0),
-#             dimnames = list(c("a","b", "c", "g", "h"), 
+#             dimnames = list(c("a","b", "c", "g", "h"),
 #                             c("A", "B", "C","G","H")), byrow = TRUE)
-#
 # 
-#x <- betalink(w1,w2, calculate_2nd_decomposition = TRUE)
+# 
+# x <- betalink(w1,w2, calculate_2nd_decomposition = TRUE)
 # 
 # predictions:
 # (poisot decomposition)
