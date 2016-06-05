@@ -275,14 +275,3 @@ betalink  <-  function(w1, w2, bf=B01, quant = FALSE, calculate_2nd_decompositio
 # calculate contributions:
 # x$OSrich/x$OS # contribution of having higher conectance in one network among the species forming the common subweb
 # x$STrich/x$ST # contribution of having higher number of links in one network among the non common species
-
-w2 <- matrix(ncol = 5, nrow = 5, c(1,1,1,1,1,
-                                  0,1,0,1,0, #small change in OS (2 links)
-                                  1,0,0,0,0,
-                                  1,0,1,0,0, #I also add one link to turnover
-                                  0,1,0,1,0),
-            dimnames = list(c("z","x", "y", "s", "t"),
-                            c("Z", "X", "Y","S","T")), byrow = TRUE)
-
-betalink(w1,w2, calculate_2nd_decomposition = TRUE)
-
