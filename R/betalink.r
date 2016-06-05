@@ -65,8 +65,8 @@ betalink  <-  function(w1, w2, bf=B01, quant = FALSE, calculate_2nd_decompositio
     Csp = sp1$all[sp1$all %in% sp2$all]
     CUsp = sp1$top[sp1$top %in% sp2$top]
     CLsp = sp1$bottom[sp1$bottom %in% sp2$bottom]
-    if((length(CUsp)>0) & (length(CLsp)>0))
-    {
+    #if((length(CUsp)>0) & (length(CLsp)>0)){ 
+    #WHY? You can calculate it the same for 0 overlap!
         w1Con = w1[CUsp,CLsp]
         w2Con = w2[CUsp,CLsp]
         nCon = sum((w1Con == w2Con) & (w1Con == 1))
@@ -100,23 +100,24 @@ betalink  <-  function(w1, w2, bf=B01, quant = FALSE, calculate_2nd_decompositio
         } else {
             b_contrib = 0
         }
-    } else {
-        beta_WN = 1 #why can you not calculate WN when all species are different?
+    #} else {
+      #  beta_WN = 1 #why can you not calculate WN when all species are different?
         #NB makes this change after thinking carefully. I think no overlap implies maximum 
         #beta, not minimum!!
-        beta_OS = 0
-        beta_ST = 1
-        b_contrib = 1
+        #NEW addition: beta_WN is already 1 in first instance
+      #  beta_OS = 0
+      #  beta_ST = 1
+      #  b_contrib = 1
         #calculate link second decomposition 
-        if(calculate_2nd_decomposition == TRUE){ 
-            beta_3 = NA #when there is no overlap can't say why, right?
-            beta_rich = NA
-            beta_OS_3 = 0
-            beta_OSrich = 0    
+      #  if(calculate_2nd_decomposition == TRUE){ 
+      #      beta_3 = NA #when there is no overlap can't say why, right?
+      #      beta_rich = NA
+      #      beta_OS_3 = 0
+      #      beta_OSrich = 0    
             #beta_ST_3 = 0
             #beta_STrich = 0
-        }            
-    }
+      #  }            
+    #}
     if(calculate_2nd_decomposition == TRUE){
         return(list(U = beta_U, L = beta_L, S = beta_S, OS = beta_OS, 
                     WN = beta_WN, ST = beta_ST, contrib = b_contrib,
@@ -167,8 +168,7 @@ betalink  <-  function(w1, w2, bf=B01, quant = FALSE, calculate_2nd_decompositio
     Csp = sp1$all[sp1$all %in% sp2$all]
     CUsp = sp1$top[sp1$top %in% sp2$top]
     CLsp = sp1$bottom[sp1$bottom %in% sp2$bottom]
-    if((length(CUsp)>0) & (length(CLsp)>0))
-    {
+    #if((length(CUsp)>0) & (length(CLsp)>0)){ #see above
       w1Con = w1[CUsp,CLsp]
       w2Con = w2[CUsp,CLsp]
       nCon = sum(pmin(w1Con, w2Con))
@@ -205,22 +205,22 @@ betalink  <-  function(w1, w2, bf=B01, quant = FALSE, calculate_2nd_decompositio
       } else {
         b_contrib = 0
       }
-    } else {
-      beta_WN = 1 #why can you not calculate WN when all species are different?
+    #} else {
+     # beta_WN = 1 #why can you not calculate WN when all species are different?
       #idem reasoning as before, no overlap, max WN
-      beta_OS = 0
-      beta_ST = 1
-      b_contrib = 1
+     #  beta_OS = 0
+     #  beta_ST = 1
+     #  b_contrib = 1
       #calculate link second decomposition 
-      if(calculate_2nd_decomposition == TRUE){ 
-        beta_3 = NA
-        beta_rich = NA
-        beta_OS_3 = 0
-        beta_OSrich = 0    
+     #  if(calculate_2nd_decomposition == TRUE){ 
+     #  beta_3 = NA
+     #  beta_rich = NA
+     #  beta_OS_3 = 0
+     #  beta_OSrich = 0    
         #beta_ST_3 = 0
         #beta_STrich = 0
-      }            
-    }
+     #}            
+    #}
     if(calculate_2nd_decomposition == TRUE){
       return(list(U = beta_U, L = beta_L, S = beta_S, OS = beta_OS, 
                   WN = beta_WN, ST = beta_ST, contrib = b_contrib,
@@ -275,3 +275,14 @@ betalink  <-  function(w1, w2, bf=B01, quant = FALSE, calculate_2nd_decompositio
 # calculate contributions:
 # x$OSrich/x$OS # contribution of having higher conectance in one network among the species forming the common subweb
 # x$STrich/x$ST # contribution of having higher number of links in one network among the non common species
+
+w2 <- matrix(ncol = 5, nrow = 5, c(1,1,1,1,1,
+                                  0,1,0,1,0, #small change in OS (2 links)
+                                  1,0,0,0,0,
+                                  1,0,1,0,0, #I also add one link to turnover
+                                  0,1,0,1,0),
+            dimnames = list(c("z","x", "y", "s", "t"),
+                            c("Z", "X", "Y","S","T")), byrow = TRUE)
+
+betalink(w1,w2, calculate_2nd_decomposition = TRUE)
+
