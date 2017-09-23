@@ -1,11 +1,7 @@
 # R package betalink
 
-Measures of network dissimiliraty using R.
+Measures of network dissimiliraty using R. 
 
-When using this package, please cite
+Note the version in this branch is older that the original 'betalink' repository and should be depreciated.
 
-T. Poisot, E. Canard, D. Mouillot, N. Mouquet & D. Gravel (2012) The dissimilarity of species interaction networks. *Ecology Letters*, 15 (12) 1353-1361.
-
-A brief introduction can be found [on Tim's blog][betablog].
-
-[betablog]: http://timotheepoisot.fr/2012/09/24/measuring-beta-diversity-networks/
+If you are looking for a quantitative version for calculating betadiversity, and a second decomposition of betadiversity in richness and turnover components. Those are on the branch ['new_features'](https://github.com/ibartomeus/betalink/tree/new_features).
