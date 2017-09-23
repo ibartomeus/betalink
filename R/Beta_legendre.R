@@ -247,5 +247,5 @@ beta.div.comp <- function(mat, coef="J", quant=FALSE, save.abc=FALSE)
 
 
 
-mat = data.frame(a = c(1,3,5,3,0), b = c(0,1,0,5,0), c = c(5,6,1,0,3))
-beta.div.comp(mat, coef="J", quant=TRUE, save.abc=FALSE)
+#mat = data.frame(a = c(1,3,5,3,0), b = c(0,1,0,5,0), c = c(5,6,1,0,3))
+#beta.div.comp(mat, coef="J", quant=TRUE, save.abc=FALSE)

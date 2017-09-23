@@ -4,15 +4,15 @@ Measures of network dissimiliraty using R.
 
 Building upon original package developed by Tim Poisot, I added the quantitative forms of calculating betadiversity, and a second decomposition of betadiversity in richness and turnover components. Those are on this branch. 
 
-For this I am using diversity calculations based on the Colwell and Coddington measure (B15 in Koleff et al. 2003) because it allows for paralel calculations of binary and quantitative data and it's decomposition. The measures is calculated as follow for binary data:
+For this I am using diversity calculations based on the Colwell and Coddington measure (`B15` in Koleff et al. 2003) because it allows for paralel calculations of binary and quantitative data and it's decomposition. The measures is calculated as follow for binary data:
 
-B15 = (b+c)/(a+b+c)   
+`B15 = (b+c)/(a+b+c)`
 
 where `a` is the number of species common to both sites, `b` is the number of species exclusive to the first site, and `c` is the number of species exclusive to the second site (Koleff et al. 2003; Carvalho et al. 2012).   
 
 Quantitative diversity calculations were based on the Ruzicka distance coefficient, which takes a parallel notation:
 
-βRuz = (B+C)/(A+B+C)  
+`βRuz = (B+C)/(A+B+C)`
 
 where `A` is the sum of intersections (or minima) of species abundances at two sites, `B` is the sum at site 1 minus `A`, and `C` is the sum at site 2 minus `A` (Legendre 2014). 
 
@@ -20,17 +20,17 @@ This two proposed beta diversity metrics for both species and interactions can a
 
 Those are calculated as: 
 
-B15 = B_3 + Brich  
+`B15 = B_3 + Brich`  
 
 where 
 
-B_3 = 2*min(b,c)/(a+b+c) 
+`B_3 = 2*min(b,c)/(a+b+c)` 
 
 and 
 
-Brich = abs(b-c)/(a+b+c)
+`Brich = abs(b-c)/(a+b+c)`
 
-This is analogous to the quantititive version βRuz = B_3 + Brich where B_3 = 2*min(B,C)/(A+B+C) and Brich = abs(B-C)/(A+B+C)
+This is analogous to the quantititive version `βRuz = B_3 + Brich` where `B_3 = 2*min(B,C)/(A+B+C)` and `Brich = abs(B-C)/(A+B+C)`
 
 
 #How to use it?
@@ -84,5 +84,7 @@ betalink(w1, w2, calculate_2nd_decomposition = TRUE, quant = TRUE)
 
 #finally I made a fucntion to extract for each web its links and see which ones are lost or not when comparing with the metaweb.
 extract.links(W = list(w1,w2,w3)) 
+
+#Other functions like betalink.dist() work as expected.
 ```
 

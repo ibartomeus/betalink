@@ -21,7 +21,7 @@
 #rich = |b-c|/(a+b+c) #Brich in measures.r
 
 #Hence, for ST I define the component of link replacement (ST_3) as:
-#ST_3 = WN_3 - OS (Link turnover not including the subwew) #not works, as OS < > WN_3
+#ST_3 = WN_3 - OS (Link turnover not including the subwew) #do not work, as OS < > WN_3
 #And the complementary component of link richness would be: 
 #STrich = ST - ST_3
 
