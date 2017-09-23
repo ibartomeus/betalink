@@ -23,7 +23,7 @@ w2 <- matrix(ncol = 5, nrow = 5, c(1,1,1,1,1,
              dimnames = list(c("a","b", "c", "g", "h"), 
                              c("A", "B", "C","G","H")), byrow = TRUE)
 
-w3 <- matrix(ncol = 6, nrow = 6, c(2,1,2,1,2,0,
+w3 <- matrix(ncol = 6, nrow = 6, c(2,1,2,1,2,0, #quantitative
                                    2,1,0,1,0,2,
                                    1,0,2,0,0,0,
                                    1,0,0,0,0,0,
@@ -32,7 +32,7 @@ w3 <- matrix(ncol = 6, nrow = 6, c(2,1,2,1,2,0,
              dimnames = list(c("a","b", "c", "d", "e","f"), 
                              c("A", "B", "C","D","E","F")), byrow = TRUE)
  
-#reproduce Poissot claulction
+#reproduce Poisot origial claulction
 betalink(w1,w2, bf = B15)
 #quantitative version
 betalink(w1,w2, quant = TRUE) #same result for links (species are quant also, so they differ)
