@@ -1,4 +1,5 @@
 # R package betalink
+[![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.2577565.svg)](https://doi.org/10.5281/zenodo.2577565)
 
 Measures of network dissimiliraty using R.
 
