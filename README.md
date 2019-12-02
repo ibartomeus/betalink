@@ -1,7 +1,7 @@
 # R package betalink
 [![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.2577565.svg)](https://doi.org/10.5281/zenodo.2577565)
 
-* If you sue this package you can cite: Noreika et al. Pollinator foraging flexibility mediates rapid plant-pollinator network restoration in semi-natural grasslands. Sci Rep 9, 15473 (2019) [https://www.nature.com/articles/s41598-019-51912-4](https://www.nature.com/articles/s41598-019-51912-4)
+* If you use this package you can cite: Noreika et al. Pollinator foraging flexibility mediates rapid plant-pollinator network restoration in semi-natural grasslands. Sci Rep 9, 15473 (2019) [https://www.nature.com/articles/s41598-019-51912-4](https://www.nature.com/articles/s41598-019-51912-4)
 
 Measures of network dissimiliraty using R.
 
